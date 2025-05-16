@@ -1,0 +1,9 @@
+﻿namespace PunchingBag.Code.Punching
+{
+    using UnityEngine;
+
+    public abstract class Damagable : MonoBehaviour
+    {
+        // Placeholder for the Damagable class
+    }
+}
