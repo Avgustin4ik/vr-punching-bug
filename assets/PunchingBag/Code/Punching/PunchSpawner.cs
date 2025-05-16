@@ -12,22 +12,12 @@
         [SerializeField] private BoxingGloveMono boxingGlovePrefab;
         [SerializeField] private BoxCollider spawnArea;
         
-        // private IInputService _inputService;
-        [Inject] IInputService _inputService;
+        private IInputService _inputService;
         
-        // public void Construct(IInputService inputService)
-        // {
-            // Debug.LogError("Constructing PunchSpawnerMono");
-            // _inputService = inputService;
-            // _inputService.ActionButton += SpawnPunch;
-        // }
-        private void Awake()
+        [Inject]
+        public void Construct(IInputService inputService)
         {
-            if (_inputService == null)
-            {
-                Debug.LogError("InputService is not assigned.");
-                return;
-            }
+            _inputService = inputService;
             _inputService.ActionButton += SpawnPunch;
         }
 
@@ -64,8 +54,8 @@
             boxingGlove.transform.position = randomPosition + spawnArea.transform.position;
             boxingGlove.transform.LookAt(punchingBag.transform);
             //var move it towatd punching bag
-            
-            // boxingGlove.rigidBody.AddForce(boxingGlove.transform.forward * 10f, ForceMode.Impulse);
+
+            boxingGlove.Punch();
             //destroy it after hit with small delay (release to pool)
         }
     }

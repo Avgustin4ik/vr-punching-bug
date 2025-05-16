@@ -347,8 +347,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4564399059210848197}
   serializedVersion: 4
-  m_Mass: 5
-  m_Drag: 30
+  m_Mass: 30
+  m_Drag: 10
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -385,22 +385,22 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 155.68877
+    limit: 97.46968
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 177
+    limit: 158.61967
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 9.061912
+    limit: 12.047398
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 13.534563
+    limit: 13.318116
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 1
