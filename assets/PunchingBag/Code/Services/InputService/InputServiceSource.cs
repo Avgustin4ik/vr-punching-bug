@@ -3,7 +3,7 @@ namespace PunchingBag.Code.Services.InputService
     using MageSurvivor.Code.Core.Abstract.Service;
     using UnityEngine;
 
-    [CreateAssetMenu(fileName = "InputServiceSource", menuName = "MageSurvivor/Services/InputServiceSource")]
+    [CreateAssetMenu(fileName = "InputServiceSource", menuName = "PGD/Services/InputServiceSource")]
     public class InputServiceSource : ServiceSource<InputService>
     {
         public KeyBinding KeyBinding;
