@@ -4,6 +4,7 @@
     using UnityEngine;
     using UnityEngine.Pool;
     using System.Collections.Generic;
+    using System.Threading;
 
     public abstract class PooledMonoBehaviour : MonoBehaviour
     {
@@ -12,6 +13,7 @@
         private static Dictionary<System.Type, ObjectPool<PooledMonoBehaviour>> Pools = new();
 
         private ObjectPool<PooledMonoBehaviour> _myPool;
+        protected CancellationTokenSource cancellationToken = new CancellationTokenSource();
 
         [RuntimeInitializeOnLoadMethod]
         public static void ReleaseAll()
@@ -79,6 +81,7 @@
         {
             if (obj == null || obj.Equals(null)) return;
             obj.gameObject.SetActive(false);
+            cancellationToken.Cancel();
         }
 
         private void OnDestroyPooledObject(PooledMonoBehaviour obj)

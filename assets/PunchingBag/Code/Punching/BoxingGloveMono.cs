@@ -1,8 +1,9 @@
 namespace PunchingBag.Code.Punching
 {
     using System;
-    using System.Collections.Generic;
+    using Cysharp.Threading.Tasks;
     using MageSurvivor.Code.Core.Pool;
+    using MoreMountains.Feedbacks;
     using UniRx;
     using UniRx.Triggers;
     using UnityEngine;
@@ -11,13 +12,13 @@ namespace PunchingBag.Code.Punching
     {
         [SerializeField] private float Force = 10f;
         [SerializeField] private Rigidbody _rigidBody;
-
+        
         public Rigidbody rigidBody =>
             _rigidBody;
 
         public static event Action<HitData> OnHit;
 
-        private void Awake()
+        private void OnEnable()
         {
             if (_rigidBody == null)
             {
@@ -26,8 +27,9 @@ namespace PunchingBag.Code.Punching
 
             _rigidBody.OnCollisionEnterAsObservable()
                 .First()
+                .Where(x => x.gameObject.TryGetComponent(out Damagable _))
                 .Subscribe(x => Hit(x))
-                .AddTo(this);
+                .AddTo(this.cancellationToken.Token);
         }
 
         public void Punch()
@@ -40,19 +42,17 @@ namespace PunchingBag.Code.Punching
             {
                 Debug.LogWarning("Rigidbody is not assigned.");
             }
-        }
+            DelayAndDespawn(2f).Forget();
 
+        }
         private void Hit(Collision collision)
         {
             //todo ! replase to Event Bus
             Debug.Log($"Hit {collision.gameObject.name}");
 
-            OnHit?.Invoke(new HitData(collision.contacts[0].point,
-                collision.contacts[0].normal,
-                Force));
+            OnHit?.Invoke(new HitData(collision.contacts[0].point, collision.contacts[0].normal, Force));
             if (collision.rigidbody == null)
                 return;
-
             if (collision.gameObject.TryGetComponent(out Damagable damagableObject))
             {
                 damagableObject.TakeDamage(Force);
@@ -61,7 +61,19 @@ namespace PunchingBag.Code.Punching
             {
                 Debug.Log("No Damagable component found on the object.");
             }
-            // other.rigidbody.A
+        }
+
+        [SerializeField] MMF_Player destroyFeedback;
+        private async UniTaskVoid DelayAndDespawn(float delay = 0f)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(delay));
+            if (destroyFeedback != null)
+            {
+                destroyFeedback.PlayFeedbacks();
+                await UniTask.Delay(TimeSpan.FromSeconds(destroyFeedback.TotalDuration));
+            }
+
+            Release();
         }
     }
 
