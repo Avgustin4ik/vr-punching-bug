@@ -10,7 +10,6 @@ namespace PunchingBag.Code.Punching
 
     public class BoxingGloveMono : PooledMonoBehaviour
     {
-        [SerializeField] private float Force = 10f;
         [SerializeField] private Rigidbody _rigidBody;
         
         public Rigidbody rigidBody =>
@@ -40,12 +39,14 @@ namespace PunchingBag.Code.Punching
             ResetRigidbodyForces();
             Release();
         }
-
-        public void Punch()
+    
+        private float _force;
+        public void Punch(float force)
         {
+            _force = force;
             if (_rigidBody != null)
             {
-                _rigidBody.AddForce(transform.forward * Force, ForceMode.Impulse);
+                _rigidBody.AddForce(transform.forward * force, ForceMode.Impulse);
             }
             else
             {
@@ -59,12 +60,12 @@ namespace PunchingBag.Code.Punching
             //todo ! replase to Event Bus
             Debug.Log($"Hit {collision.gameObject.name}");
 
-            OnHit?.Invoke(new HitData(collision.contacts[0].point, collision.contacts[0].normal, Force));
+            OnHit?.Invoke(new HitData(collision.contacts[0].point, collision.contacts[0].normal, _force));
             if (collision.rigidbody == null)
                 return;
             if (collision.gameObject.TryGetComponent(out Damagable damagableObject))
             {
-                damagableObject.TakeDamage(Force);
+                damagableObject.TakeDamage(_force);
                 ReleaseToPool();
                 // if(_despawnTask.Status != UniTaskStatus.Pending)
                 //     _despawnTask = DelayAndDespawn();

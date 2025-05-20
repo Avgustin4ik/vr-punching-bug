@@ -12,7 +12,8 @@
         [SerializeField] private Damagable punchingBag;
         [SerializeField] private BoxingGloveMono boxingGlovePrefab;
         [SerializeField] private BoxCollider spawnArea;
-        
+        [SerializeField] private float forceMin = 250f;
+        [SerializeField] private float forceMax = 500f;
         private IInputService _inputService;
         
         [Inject]
@@ -67,7 +68,7 @@
                 transform.rotation);
             boxingGlove.transform.LookAt(punchingBag.transform);
 
-            boxingGlove.Punch();
+            boxingGlove.Punch(UnityEngine.Random.Range(forceMin, forceMax));
         }
 #if UNITY_EDITOR
         private void OnDrawGizmos()
