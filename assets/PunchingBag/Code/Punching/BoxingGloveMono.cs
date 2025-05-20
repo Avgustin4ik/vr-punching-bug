@@ -1,8 +1,8 @@
 namespace PunchingBag.Code.Punching
 {
     using System;
+    using Core.Pool;
     using Cysharp.Threading.Tasks;
-    using MageSurvivor.Code.Core.Pool;
     using MoreMountains.Feedbacks;
     using UniRx;
     using UniRx.Triggers;
@@ -17,19 +17,28 @@ namespace PunchingBag.Code.Punching
             _rigidBody;
 
         public static event Action<HitData> OnHit;
+        private bool _wasHit = false;
 
         private void OnEnable()
         {
+            _wasHit = false;
+
             if (_rigidBody == null)
             {
                 _rigidBody = GetComponent<Rigidbody>();
             }
 
             _rigidBody.OnCollisionEnterAsObservable()
-                .First()
-                .Where(x => x.gameObject.TryGetComponent(out Damagable _))
-                .Subscribe(x => Hit(x))
-                .AddTo(this.cancellationToken.Token);
+                .FirstOrDefault()
+                .Where(x => x.gameObject.TryGetComponent(out Damagable _) && !_wasHit)
+                .Subscribe(Hit)
+                .AddTo(this.CancellationToken.Token);
+        }
+
+        protected void ReleaseToPool()
+        {
+            ResetRigidbodyForces();
+            Release();
         }
 
         public void Punch()
@@ -42,11 +51,11 @@ namespace PunchingBag.Code.Punching
             {
                 Debug.LogWarning("Rigidbody is not assigned.");
             }
-            DelayAndDespawn(2f).Forget();
 
         }
         private void Hit(Collision collision)
         {
+            _wasHit = true;
             //todo ! replase to Event Bus
             Debug.Log($"Hit {collision.gameObject.name}");
 
@@ -56,6 +65,9 @@ namespace PunchingBag.Code.Punching
             if (collision.gameObject.TryGetComponent(out Damagable damagableObject))
             {
                 damagableObject.TakeDamage(Force);
+                ReleaseToPool();
+                // if(_despawnTask.Status != UniTaskStatus.Pending)
+                //     _despawnTask = DelayAndDespawn();
             }
             else
             {
@@ -63,8 +75,10 @@ namespace PunchingBag.Code.Punching
             }
         }
 
+
+        private UniTask _despawnTask;
         [SerializeField] MMF_Player destroyFeedback;
-        private async UniTaskVoid DelayAndDespawn(float delay = 0f)
+        private async UniTask DelayAndDespawn(float delay = 0f)
         {
             await UniTask.Delay(TimeSpan.FromSeconds(delay));
             if (destroyFeedback != null)
@@ -72,8 +86,31 @@ namespace PunchingBag.Code.Punching
                 destroyFeedback.PlayFeedbacks();
                 await UniTask.Delay(TimeSpan.FromSeconds(destroyFeedback.TotalDuration));
             }
-
+            ResetRigidbodyForces();
             Release();
+        }
+        
+        private void ResetRigidbodyForces()
+        {
+            // Reset forces on the main Rigidbody
+            if (_rigidBody != null)
+            {
+                _rigidBody.velocity = Vector3.zero;
+                _rigidBody.angularVelocity = Vector3.zero;
+                _rigidBody.Sleep(); // Put Rigidbody to sleep to clear internal forces
+            }
+
+            // Reset forces on all child Rigidbodies
+            var childRigidbodies = GetComponentsInChildren<Rigidbody>();
+            foreach (var rb in childRigidbodies)
+            {
+                if (rb != _rigidBody) // Skip the main Rigidbody to avoid double reset
+                {
+                    rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                    rb.Sleep();
+                }
+            }
         }
     }
 

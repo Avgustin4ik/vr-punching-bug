@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 7053636222576755433}
   - component: {fileID: 802594422806258301}
   - component: {fileID: 8316885027368813840}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DespawnFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7053636222576755433
 Transform:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
         TargetBlink: {fileID: 8316885027368813840}
         ExtraTargetBlinks: []
         BlinkMode: 0
-        Duration: 3.5
+        Duration: 1
         GrabDurationFromBlinkButton:
           ButtonText: Grab Duration From Blink Component
 --- !u!114 &8316885027368813840
@@ -279,20 +279,20 @@ MonoBehaviour:
   Blinking: 0
   ForceStateOnExit: 0
   StateOnExit: 0
-  TimescaleMode: 0
-  RepeatCount: 1
+  TimescaleMode: 1
+  RepeatCount: 0
   Phases:
-  - PhaseDuration: 1
+  - PhaseDuration: 0.5
     OffDuration: 0.1
     OnDuration: 0.2
     OffLerpDuration: 0
     OnLerpDuration: 0
-  - PhaseDuration: 0.5
+  - PhaseDuration: 0.3
     OffDuration: 0.1
     OnDuration: 0.1
     OffLerpDuration: 0
     OnLerpDuration: 0
-  - PhaseDuration: 0.25
+  - PhaseDuration: 0.2
     OffDuration: 0.05
     OnDuration: 0.05
     OffLerpDuration: 0
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 7880752831138341449}
   - component: {fileID: 2014881643770592415}
   - component: {fileID: 2040706633691846646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: finger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 2367058896202489169}
   - component: {fileID: 638774618372693276}
   - component: {fileID: 6939346248729404072}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GloveModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 8055599313205471530}
   - component: {fileID: 5571424734699327270}
   - component: {fileID: 4183340775327952727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 4163640824990769967}
   - component: {fileID: 7400756377232921862}
   - component: {fileID: 3386420923830711778}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ MonoBehaviour:
   prewarmCount: 10
   Force: 200
   _rigidBody: {fileID: 3386420923830711778}
-  destroyFeedback: {fileID: 0}
+  destroyFeedback: {fileID: 802594422806258301}
 --- !u!54 &3386420923830711778
 Rigidbody:
   m_ObjectHideFlags: 0

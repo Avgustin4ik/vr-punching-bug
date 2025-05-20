@@ -1,10 +1,10 @@
-﻿namespace MageSurvivor.Code.Core.Pool
+﻿namespace PunchingBag.Code.Core.Pool
 {
     using System;
-    using UnityEngine;
-    using UnityEngine.Pool;
     using System.Collections.Generic;
     using System.Threading;
+    using UnityEngine;
+    using UnityEngine.Pool;
 
     public abstract class PooledMonoBehaviour : MonoBehaviour
     {
@@ -13,7 +13,7 @@
         private static Dictionary<System.Type, ObjectPool<PooledMonoBehaviour>> Pools = new();
 
         private ObjectPool<PooledMonoBehaviour> _myPool;
-        protected CancellationTokenSource cancellationToken = new CancellationTokenSource();
+        protected readonly CancellationTokenSource CancellationToken = new CancellationTokenSource();
 
         [RuntimeInitializeOnLoadMethod]
         public static void ReleaseAll()
@@ -77,11 +77,11 @@
             obj.gameObject.SetActive(true);
         }
 
-        private void OnRelease(PooledMonoBehaviour obj)
+        protected void OnRelease(PooledMonoBehaviour obj)
         {
             if (obj == null || obj.Equals(null)) return;
             obj.gameObject.SetActive(false);
-            cancellationToken.Cancel();
+            CancellationToken.Cancel();
         }
 
         private void OnDestroyPooledObject(PooledMonoBehaviour obj)

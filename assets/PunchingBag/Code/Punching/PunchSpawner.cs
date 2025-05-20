@@ -1,6 +1,5 @@
 ﻿namespace PunchingBag.Code.Punching
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Reflex.Attributes;
@@ -30,6 +29,7 @@
                 _inputService.ActionButton -= SpawnPunch;
             }
         }
+
         
         private Queue<Vector3> positions = new Queue<Vector3>(2);
         private void SpawnPunch()
