@@ -9,7 +9,7 @@ namespace PunchingBag.Code.Services.VfxService
 
     public interface IVfxService
     {
-        void PlayVfx(VfxType type, Vector3 position);
+        void PlayVfx(VfxType type, Vector3 position, Quaternion rotation = default);
         void PlayStrongPunchVfx();
     }
 
@@ -42,7 +42,7 @@ namespace PunchingBag.Code.Services.VfxService
         }
 
 
-        public void PlayVfx(VfxType type, Vector3 position)
+        public void PlayVfx(VfxType type, Vector3 position, Quaternion rotation = default)
         {
             if (_vfxDictionary.TryGetValue(type, out var vfx))
             {
@@ -62,6 +62,7 @@ namespace PunchingBag.Code.Services.VfxService
                         throw new ArgumentOutOfRangeException(nameof(type), type, null);
                 }
                 instance.transform.position = position;
+                instance.transform.rotation = rotation;
                 instance.Play();
             }
             else

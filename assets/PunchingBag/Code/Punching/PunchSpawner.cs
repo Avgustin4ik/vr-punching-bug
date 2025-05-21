@@ -21,6 +21,7 @@
         {
             _inputService = inputService;
             _inputService.ActionButton += SpawnPunch;
+            boxingGlovePrefab.InitializePool();
         }
 
         private void OnDestroy()

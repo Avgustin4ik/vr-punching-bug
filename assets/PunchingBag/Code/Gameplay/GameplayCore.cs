@@ -36,7 +36,7 @@
         private void SpawnVfx(HitData hitData)
         {
             _vfxService.PlayVfx(VfxType.Hit, hitData.HitPoint);
-            _vfxService.PlayVfx(VfxType.Sweat, hitData.HitPoint);
+            _vfxService.PlayVfx(VfxType.Sweat, hitData.HitPoint, Quaternion.FromToRotation(hitData.HitPoint, hitData.HitDirection));
             Debug.Log($"Hit at {hitData.HitPoint} with force {hitData.HitForce}");
             if (hitData.HitForce >= strongPunchForceMinBorder)
                 _vfxService.PlayStrongPunchVfx();

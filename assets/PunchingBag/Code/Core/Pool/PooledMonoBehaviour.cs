@@ -24,8 +24,8 @@
             }
             GC.Collect();
         }
-
-        private void InitializePool()
+        
+        public void InitializePool()
         {
             System.Type type = GetType();
             if (Pools.TryGetValue(type, out _myPool)) return;
