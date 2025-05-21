@@ -405,24 +405,8 @@ PrefabInstance:
       value: 38.54328
       objectReference: {fileID: 0}
     - target: {fileID: 6014957815436557796, guid: 16e6d13d8a219e24bb7b6086d6ef15dd, type: 3}
-      propertyPath: m_AngularXDrive.positionDamper
-      value: 111
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014957815436557796, guid: 16e6d13d8a219e24bb7b6086d6ef15dd, type: 3}
-      propertyPath: m_AngularXDrive.positionSpring
-      value: 222
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014957815436557796, guid: 16e6d13d8a219e24bb7b6086d6ef15dd, type: 3}
       propertyPath: m_AngularXDrive.useAcceleration
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014957815436557796, guid: 16e6d13d8a219e24bb7b6086d6ef15dd, type: 3}
-      propertyPath: m_AngularYZDrive.positionDamper
-      value: 111
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014957815436557796, guid: 16e6d13d8a219e24bb7b6086d6ef15dd, type: 3}
-      propertyPath: m_AngularYZDrive.positionSpring
-      value: 222
       objectReference: {fileID: 0}
     - target: {fileID: 8416368648484518948, guid: 16e6d13d8a219e24bb7b6086d6ef15dd, type: 3}
       propertyPath: m_LocalPosition.x
