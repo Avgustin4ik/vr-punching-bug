@@ -12,12 +12,11 @@ namespace PunchingBag.Code.Punching
     {
         [SerializeField] private Rigidbody _rigidBody;
         
-        public Rigidbody rigidBody =>
-            _rigidBody;
+        public Rigidbody rigidBody => _rigidBody;
 
         public static event Action<HitData> OnHit;
         private bool _wasHit = false;
-
+        private IDisposable _stream;
         private void OnEnable()
         {
             _wasHit = false;
@@ -27,11 +26,10 @@ namespace PunchingBag.Code.Punching
                 _rigidBody = GetComponent<Rigidbody>();
             }
 
-            _rigidBody.OnCollisionEnterAsObservable()
+            _stream = _rigidBody.OnCollisionEnterAsObservable()
                 .FirstOrDefault()
                 .Where(x => x.gameObject.TryGetComponent(out Damagable _) && !_wasHit)
-                .Subscribe(Hit)
-                .AddTo(this.CancellationToken.Token);
+                .Subscribe(Hit);
         }
 
         protected void ReleaseToPool()
@@ -79,6 +77,7 @@ namespace PunchingBag.Code.Punching
 
         private UniTask _despawnTask;
         [SerializeField] MMF_Player destroyFeedback;
+
         private async UniTask DelayAndDespawn(float delay = 0f)
         {
             await UniTask.Delay(TimeSpan.FromSeconds(delay));
@@ -89,6 +88,12 @@ namespace PunchingBag.Code.Punching
             }
             ResetRigidbodyForces();
             Release();
+        }
+        
+        private void OnDisable()
+        {
+            _stream?.Dispose();
+            _stream = null;
         }
         
         private void ResetRigidbodyForces()
