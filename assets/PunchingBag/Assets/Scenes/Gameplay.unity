@@ -1474,6 +1474,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PunchingBag
       objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: animationsTriggers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: animationsTriggers.Array.data[0]
+      value: hit1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: animationsTriggers.Array.data[1]
+      value: hit2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: animationsTriggers.Array.data[2]
+      value: hit3
+      objectReference: {fileID: 0}
     - target: {fileID: 6420970195669259104, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
