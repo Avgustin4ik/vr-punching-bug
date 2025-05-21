@@ -17,3 +17,43 @@ MonoBehaviour:
     Vfx: {fileID: -6287747729058960700, guid: 312063df83f2b524a8e9a43038fee611, type: 3}
   - Type: 2
     Vfx: {fileID: -4277065898531729246, guid: e43c8d83cb7472741b1a541e161d42f3, type: 3}
+  _skyBoxVfxSetting:
+    color:
+      serializedVersion: 2
+      rgba: 0
+    duration: 1
+    ease: 0
+    animationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.0021362305
+        inSlope: -5.6613317
+        outSlope: -5.6613317
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.30833107
+      - serializedVersion: 3
+        time: 0.38336176
+        value: 0.9981426
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    targetValue: 0.3

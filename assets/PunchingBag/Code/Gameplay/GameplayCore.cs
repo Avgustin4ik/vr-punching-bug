@@ -12,6 +12,7 @@
     {
         private IVfxService _vfxService;
         private IInputService _inputService;
+        [SerializeField] private float strongPunchForceMinBorder = 350f;
         public static CancellationTokenSource MainToken = new CancellationTokenSource();
         
         [Inject]
@@ -36,6 +37,9 @@
         {
             _vfxService.PlayVfx(VfxType.Hit, hitData.HitPoint);
             _vfxService.PlayVfx(VfxType.Sweat, hitData.HitPoint);
+            Debug.Log($"Hit at {hitData.HitPoint} with force {hitData.HitForce}");
+            if (hitData.HitForce >= strongPunchForceMinBorder)
+                _vfxService.PlayStrongPunchVfx();
         }
 
         private void OnDestroy()

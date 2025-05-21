@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-6886232222588384712
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: de060b8fb11ffab43974a88b7a1112eb
+  m_EffectName: Pitch Shifter
+  m_MixLevel: 1b640adfa10b3694b86c85ca10208d0b
+  m_Parameters:
+  - m_ParameterName: Pitch
+    m_GUID: 4c152884611a1aa4bb170c569bee9598
+  - m_ParameterName: FFT size
+    m_GUID: f29bef78f7f2436489b58e882244d2a8
+  - m_ParameterName: Overlap
+    m_GUID: c1e2e4cfc84a4f244853a30537bbeb1e
+  - m_ParameterName: Max channels
+    m_GUID: 9d0d7a4f5a45fb04990863b75fbe3a28
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-4576635800020724519
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -82,6 +104,7 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 6411709140444895230}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -103,7 +126,7 @@ AudioMixerController:
     - 39aa7f1a81fc93045baa62f351379f1b
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 6411709140444895230}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -153,6 +176,8 @@ AudioMixerSnapshotController:
     0f44e1c042b36e646938a885f8d57ea3: 0
     c2e19a843805c3a4ca00e7acf8b2ba84: 0
     534e52a4a366075458077c0854e78569: 0
+    502a12b576dde844491815d64d1c4531: 1
+    f75e977dcda787e4283bdfd2e0fbd835: 1
     6b54e6bee2cbfc5408b1e9a970814b35: 0
   m_TransitionOverrides: {}
 --- !u!244 &5731139238567193833
@@ -169,6 +194,23 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &6411709140444895230
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Slowmo
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 8ea4003d28f6e8f44980956b01109b3a
+  m_FloatValues:
+    0f44e1c042b36e646938a885f8d57ea3: 0
+    c2e19a843805c3a4ca00e7acf8b2ba84: 0
+    534e52a4a366075458077c0854e78569: 0
+    502a12b576dde844491815d64d1c4531: 1
+    f75e977dcda787e4283bdfd2e0fbd835: 0.62
+    6b54e6bee2cbfc5408b1e9a970814b35: 0
+  m_TransitionOverrides: {}
 --- !u!244 &8563443583662627042
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
