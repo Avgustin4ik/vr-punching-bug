@@ -65,8 +65,6 @@ namespace PunchingBag.Code.Punching
             {
                 damagableObject.TakeDamage(_force);
                 ReleaseToPool();
-                // if(_despawnTask.Status != UniTaskStatus.Pending)
-                //     _despawnTask = DelayAndDespawn();
             }
             else
             {

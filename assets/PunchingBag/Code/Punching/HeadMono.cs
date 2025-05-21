@@ -18,6 +18,7 @@
             {
                 strongHitFeedback?.PlayFeedbacks();
             }
+            base.TakeDamage(force);
         }
 
         private void PlayAnimation(int range)

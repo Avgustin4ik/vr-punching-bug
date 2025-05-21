@@ -170,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 92383257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0, z: -10}
+  m_LocalPosition: {x: -0.03, y: 2.38, z: -10}
   m_LocalScale: {x: 8.0261, y: 8.0261, z: 2.5761373}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1825,6 +1825,14 @@ PrefabInstance:
       value: PunchingBag
       objectReference: {fileID: 0}
     - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: strongHitLowLimit
+      value: 430
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damageProbabilityThreshold
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
       propertyPath: animationsTriggers.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1839,6 +1847,66 @@ PrefabInstance:
     - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
       propertyPath: animationsTriggers.Array.data[2]
       value: hit3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[1].time
+      value: 0.624882
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[2].time
+      value: 0.98565674
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[1].value
+      value: 0.9507675
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[2].value
+      value: -0.010368347
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[0].inSlope
+      value: 0.103299744
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[1].inSlope
+      value: 2.7730148
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[2].inSlope
+      value: -1.1838092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[0].outSlope
+      value: 0.103299744
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[1].inWeight
+      value: 0.13421656
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[1].outSlope
+      value: 2.7730148
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[2].inWeight
+      value: 0.38365594
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[2].outSlope
+      value: -1.1838092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[0].outWeight
+      value: 0.79416674
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494625939155377855, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
+      propertyPath: damagePobabilityCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 6420970195669259104, guid: 6c36b53299ddcd347a80902beeee4a91, type: 3}
       propertyPath: m_LocalPosition.x
